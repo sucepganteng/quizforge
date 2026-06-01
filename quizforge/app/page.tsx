@@ -118,7 +118,7 @@ Answer: B`}
               return (
                 <label
                   key={i}
-                  className={`flex gap-2 items-center p-1 rounded ${
+                  className={`text-white flex gap-2 items-center p-3 rounded ${
                     score !== null
                       ? isCorrect
                         ? "bg-green-900/40 border border-green-500"
