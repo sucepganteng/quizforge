@@ -121,9 +121,9 @@ Answer: B`}
                   className={`flex gap-2 items-center p-1 rounded ${
                     score !== null
                       ? isCorrect
-                        ? "bg-green-100"
+                        ? "bg-green-900/40 border border-green-500"
                         : isSelected
-                        ? "bg-red-100"
+                        ? "bg-red-900/40 border border-red-500"
                         : ""
                       : ""
                   }`}
