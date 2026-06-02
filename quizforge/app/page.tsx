@@ -11,18 +11,22 @@ type Question = {
 
 const normalizeFormat = (text: string) => {
   return text
-    .replace(/^a[\.\)]/gim, "A:")
-    .replace(/^b[\.\)]/gim, "B:")
-    .replace(/^c[\.\)]/gim, "C:")
-    .replace(/^d[\.\)]/gim, "D:")
+    // a. → A:
+    .replace(/^a[\.\)]\s*/gim, "A: ")
+    .replace(/^b[\.\)]\s*/gim, "B: ")
+    .replace(/^c[\.\)]\s*/gim, "C: ")
+    .replace(/^d[\.\)]\s*/gim, "D: ")
 
-    .replace(/^A[\.\)]/gm, "A:")
-    .replace(/^B[\.\)]/gm, "B:")
-    .replace(/^C[\.\)]/gm, "C:")
-    .replace(/^D[\.\)]/gm, "D:")
+    // A. → A:
+    .replace(/^A[\.\)]\s*/gm, "A: ")
+    .replace(/^B[\.\)]\s*/gm, "B: ")
+    .replace(/^C[\.\)]\s*/gm, "C: ")
+    .replace(/^D[\.\)]\s*/gm, "D: ")
 
-    .replace(/^Jawaban:/gim, "Answer:")
+    // Jawaban → Answer
+    .replace(/^Jawaban\s*:/gim, "Answer:")
 
+    // 1. atau 1) → Q:
     .replace(/^\d+[\.\)]\s*/gm, "Q: ");
 };
 
@@ -33,7 +37,12 @@ export default function Home() {
   const [score, setScore] = useState<number | null>(null);
 
   const generateQuiz = () => {
-    const lines = input.split("\n").map(l => l.trim()).filter(Boolean);
+    const normalizedText = normalizeFormat(input);
+
+    const lines = normalizedText
+      .split("\n")
+      .map(l => l.trim())
+      .filter(Boolean);
 
     const result: Question[] = [];
 
