@@ -101,7 +101,7 @@ export default function Home() {
 setQuestions(result);
 setSelected({});
 setScore(null);
-
+:}
   const handleSelect = (qid: number, optIndex: number) => {
     setSelected(prev => ({
       ...prev,
