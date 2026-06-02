@@ -9,6 +9,23 @@ type Question = {
   answer: number;
 };
 
+const normalizeFormat = (text: string) => {
+  return text
+    .replace(/^a[\.\)]/gim, "A:")
+    .replace(/^b[\.\)]/gim, "B:")
+    .replace(/^c[\.\)]/gim, "C:")
+    .replace(/^d[\.\)]/gim, "D:")
+
+    .replace(/^A[\.\)]/gm, "A:")
+    .replace(/^B[\.\)]/gm, "B:")
+    .replace(/^C[\.\)]/gm, "C:")
+    .replace(/^D[\.\)]/gm, "D:")
+
+    .replace(/^Jawaban:/gim, "Answer:")
+
+    .replace(/^\d+[\.\)]\s*/gm, "Q: ");
+};
+
 export default function Home() {
   const [input, setInput] = useState("");
   const [questions, setQuestions] = useState<Question[]>([]);
