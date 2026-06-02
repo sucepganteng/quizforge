@@ -90,6 +90,9 @@ export default function Home() {
       }
     }
 
+    console.log(result);
+    console.log(result.length);
+    
     if (result.length === 0) {
   alert("Tidak ada soal yang berhasil dikenali.");
   return;
