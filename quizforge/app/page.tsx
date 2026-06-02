@@ -30,7 +30,7 @@ export default function Home() {
         options = [];
       }
 
-      else if (/^[A-D]:/.test(line)) {
+      else if (/^[A-D][\.\):]/.test(line)) {
         options.push(line.slice(2).trim());
       }
 
