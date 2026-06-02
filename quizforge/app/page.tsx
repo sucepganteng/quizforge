@@ -90,10 +90,14 @@ export default function Home() {
       }
     }
 
-    setQuestions(result);
-    setSelected({});
-    setScore(null);
-  };
+    if (result.length === 0) {
+  alert("Tidak ada soal yang berhasil dikenali.");
+  return;
+}
+
+setQuestions(result);
+setSelected({});
+setScore(null);
 
   const handleSelect = (qid: number, optIndex: number) => {
     setSelected(prev => ({
