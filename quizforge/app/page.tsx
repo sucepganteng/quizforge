@@ -37,6 +37,8 @@ export default function Home() {
   const [score, setScore] = useState<number | null>(null);
 
   const generateQuiz = () => {
+    alert("Generate Quiz clicked");
+    
     const normalizedText = normalizeFormat(input);
 
     const lines = normalizedText
