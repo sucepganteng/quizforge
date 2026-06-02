@@ -25,9 +25,19 @@ export default function Home() {
     let answer = 0;
 
     for (let line of lines) {
-      if (line.startsWith("Q:")) {
-        question = line.replace("Q:", "").trim();
-        options = [];
+  const isQuestion =
+    line.startsWith("Q:") ||
+    /^\d+\./.test(line) ||
+    /^\d+\)/.test(line);
+
+  if (isQuestion) {
+    question = line
+      .replace(/^Q:\s*/i, "")
+      .replace(/^\d+\.\s*/, "")
+      .replace(/^\d+\)\s*/, "")
+      .trim();
+
+    options = [];
       }
 
       else if (/^[A-D][\.\):]/.test(line)) {
