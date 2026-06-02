@@ -44,9 +44,12 @@ export default function Home() {
         options.push(line.slice(2).trim());
       }
 
-      else if (line.toLowerCase().startsWith("answer")) {
-        const ans = line.split(":")[1]?.trim()?.toUpperCase();
-        if (!ans) continue;
+      else if (
+  line.toLowerCase().startsWith("answer") ||
+  line.toLowerCase().startsWith("jawaban")
+) {
+  const ans = line.split(":")[1]?.trim()?.toUpperCase();
+  if (!ans) continue;
 
         answer = ans.charCodeAt(0) - 65;
 
