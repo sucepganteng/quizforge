@@ -10,6 +10,27 @@ type Question = {
 };
 
 const normalizeFormat = (text: string) => {
+
+  // Pecah opsi yang ditulis dalam satu baris
+  text = text
+    .replace(/\s+A:/g, "\nA:")
+    .replace(/\s+B:/g, "\nB:")
+    .replace(/\s+C:/g, "\nC:")
+    .replace(/\s+D:/g, "\nD:")
+
+    .replace(/\s+A\./g, "\nA.")
+    .replace(/\s+B\./g, "\nB.")
+    .replace(/\s+C\./g, "\nC.")
+    .replace(/\s+D\./g, "\nD.")
+
+    .replace(/\s+A\)/g, "\nA)")
+    .replace(/\s+B\)/g, "\nB)")
+    .replace(/\s+C\)/g, "\nC)")
+    .replace(/\s+D\)/g, "\nD)")
+
+    .replace(/\s+Answer:/gi, "\nAnswer:")
+    .replace(/\s+Jawaban:/gi, "\nJawaban:");
+
   return text
     // a. → A:
     .replace(/^a[\.\)]\s*/gim, "A: ")
