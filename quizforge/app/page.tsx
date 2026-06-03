@@ -177,7 +177,7 @@ Answer: B`}
           <div key={q.id} className="border p-4 rounded">
 
             <p className="font-semibold mb-2">
-              {q.question}
+              {q.id + 1}. {q.question}
             </p>
 
             {q.options.map((opt, i) => {
