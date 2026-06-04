@@ -26,6 +26,18 @@ const normalizeFormat = (text: string) => {
     .replace(/\\[a-zA-Z]+/g, "")
     .replace(/[{}]/g, "")
     .replace(/\\/g, "")
+    .replace(/\^2/g, "²")
+    .replace(/\^3/g, "³")
+    .replace(/\^0/g, "⁰")
+    .replace(/\^1/g, "¹")
+    .replace(/\^4/g, "⁴")
+    .replace(/\^5/g, "⁵")
+    .replace(/\^6/g, "⁶")
+    .replace(/\^7/g, "⁷")
+    .replace(/\^8/g, "⁸")
+    .replace(/\^9/g, "⁹")
+    .replace(/\^-1/g, "⁻¹")
+    .replace(/\^\{-1\}/g, "⁻¹")
 
   // Pecah opsi yang ditulis dalam satu baris
   text = text
