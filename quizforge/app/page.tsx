@@ -192,12 +192,28 @@ D: Bangkok
 Answer: B`}
       />
 
-      <button
-        onClick={generateQuiz}
-        className="mt-3 px-5 py-2 bg-black text-white rounded"
-      >
-        Generate Quiz
-      </button>
+      <div className="mt-3 flex gap-2">
+  <button
+    onClick={generateQuiz}
+    className="px-5 py-2 bg-black text-white rounded"
+  >
+    Generate Quiz
+  </button>
+
+  <button
+    onClick={() => {
+      if (confirm("Hapus semua soal?")) {
+        setInput("");
+        setQuestions([]);
+        setSelected({});
+        setScore(null);
+      }
+    }}
+    className="px-5 py-2 bg-red-600 text-white rounded"
+  >
+    Clear All
+  </button>
+</div>
 
       {/* QUIZ */}
       <div className="mt-6 space-y-4">
