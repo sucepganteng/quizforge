@@ -270,10 +270,46 @@ Answer: B`}
 
       {/* SCORE RESULT */}
       {score !== null && (
-        <p className="mt-4 text-xl font-bold">
-          Score: {score} / {questions.length}
-        </p>
-      )}
+  <div className="mt-4">
+    <p className="text-xl font-bold">
+      Score: {score} / {questions.length}
+    </p>
+
+    <button
+      onClick={() => {
+        const correct = score;
+        const total = questions.length;
+        const percent = ((correct / total) * 100).toFixed(1);
+
+        const content = `
+QuizForge Result
+
+Score: ${correct}/${total}
+Percentage: ${percent}%
+
+Correct: ${correct}
+Wrong: ${total - correct}
+`;
+
+        const blob = new Blob([content], {
+          type: "text/plain",
+        });
+
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "quiz-result.txt";
+        a.click();
+
+        URL.revokeObjectURL(url);
+      }}
+      className="mt-3 px-5 py-2 bg-blue-600 text-white rounded"
+    >
+      Export Result
+    </button>
+  </div>
+)}
 
     </main>
   );
