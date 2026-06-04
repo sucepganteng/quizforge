@@ -12,10 +12,20 @@ type Question = {
 const normalizeFormat = (text: string) => {
 
   text = text
+    // Bersihkan rumus/LaTeX dari AI
+    .replace(/\$\$/g, "")
     .replace(/\$/g, "")
-    .replace(/\\circ/g, "o")
-    .replace(/\\epsilon/g, "ε")
-    .replace(/\\hat\{y\}/g, "ŷ")
+    .replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, "($1)/($2)")
+    .replace(/\\sqrt\{([^}]*)\}/g, "√($1)")
+    .replace(/\\times/g, "×")
+    .replace(/\\div/g, "÷")
+    .replace(/\\pm/g, "±")
+    .replace(/\\circ/g, "∘")
+    .replace(/\\Sigma/g, "Σ")
+    .replace(/\\[a-zA-Z]+\{([^}]*)\}/g, "$1")
+    .replace(/\\[a-zA-Z]+/g, "")
+    .replace(/[{}]/g, "")
+    .replace(/\\/g, "")
 
   // Pecah opsi yang ditulis dalam satu baris
   text = text
