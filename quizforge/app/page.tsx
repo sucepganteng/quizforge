@@ -11,6 +11,12 @@ type Question = {
 
 const normalizeFormat = (text: string) => {
 
+  text = text
+    .replace(/\$/g, "")
+    .replace(/\\circ/g, "o")
+    .replace(/\\epsilon/g, "ε")
+    .replace(/\\hat\{y\}/g, "ŷ")
+
   // Pecah opsi yang ditulis dalam satu baris
   text = text
     .replace(/\s+A:/g, "\nA:")
